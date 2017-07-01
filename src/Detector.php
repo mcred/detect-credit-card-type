@@ -3,15 +3,21 @@ namespace CardDetect;
 
 class Detector
 {
-    public function isVisa(string $card)
+    private function isVisa(string $card) : bool
     {
         return preg_match("/^4[0-9]{0,15}$/i", $card);
+    }
+
+    private function isMasterCard(string $card) :  bool
+    {
+        return preg_match("/^5$|^5[1-5][0-9]{0,14}$/i", $card);
     }
 
     public function detect(string $card) : string
     {
         $cardTypes = [
-            'Visa'
+            'Visa',
+            'MasterCard'
         ];
         foreach ($cardTypes as $cardType) {
             $method = 'is' . $cardType;
