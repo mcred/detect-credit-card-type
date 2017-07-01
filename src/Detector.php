@@ -37,5 +37,6 @@ class Detector
                 return $cardType;
             }
         }
+        return 'Invalid Card';
     }
 }
