@@ -15,6 +15,9 @@
         "phpab/phpab": "^0.1.0",
         "theseer/autoload": "^1.24"
     },
+    "autoload": {
+        "psr-0": { "CardDetect": "src/" }
+    },
     "bin": [
         "card-detect"
     ]
