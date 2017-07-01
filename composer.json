@@ -1,0 +1,17 @@
+{
+    "name": "mcred/detect-credit-card-type",
+    "description": "Utility to determine credit card type by PAN",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derek Smart",
+            "email": "derek@grindaga.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
+    }
+}

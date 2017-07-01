@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="tests/bootstrap.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         beStrictAboutCoversAnnotation="false"
+         forceCoversAnnotation="true">
+
+  <testsuites>
+    <testsuite name="phpred">
+      <directory suffix="Test.php">tests/unit/</directory>
+    </testsuite>
+  </testsuites>
+
+  <logging>
+    <log type="coverage-html" target="build/coverage"/>
+    <log type="coverage-xml" target="build/logs/phpunit" />
+    <log type="coverage-clover" target="build/logs/clover.xml"/>
+    <log type="coverage-crap4j" target="build/logs/crap4j.xml"/>
+    <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+  </logging>
+
+  <filter>
+    <whitelist addUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">src</directory>
+      <exclude>
+        <file>src/autoload.php</file>
+      </exclude>
+    </whitelist>
+  </filter>
+</phpunit>

@@ -1,0 +1,7 @@
+.DS_Store
+.idea
+.env
+vendor/
+build/coverage
+build/logs
+src/autoload.php

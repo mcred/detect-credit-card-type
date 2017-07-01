@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="five-point-ivr" default="build">
+
+    <property name="composer" value="composer"/>
+    <property name="phpab" value="${basedir}/vendor/bin/phpab"/>
+    <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
+
+    <target name="build"
+            depends="composerInstall,clean,autoload"
+            description="Prepares the exercise"/>
+
+    <target name="autoload"
+            unless="autoload.done"
+            description="Generate the autoloader.">
+        <exec executable="${phpab}" taskname="phpab">
+            <arg value="-1" />
+            <arg value="--output" />
+            <arg path="${basedir}/src/autoload.php" />
+            <arg path="${basedir}/src" />
+        </exec>
+
+        <property name="autoload.done" value="true"/>
+    </target>
+
+    <target name="composerInstall"
+            unless="composerInstall.done"
+            description="Installs composer dependencies">
+        <exec executable="${composer}" taskname="composer">
+            <arg value="install"/>
+        </exec>
+        <property name="composerInstall.done" value="true"/>
+    </target>
+
+    <target name="clean"
+            unless="clean.done"
+            description="Cleanup build artifacts">
+        <delete dir="${basedir}/build/coverage"/>
+        <delete dir="${basedir}/build/logs"/>
+        <delete file="${basedir}/src/autoload.php"/>
+        <property name="clean.done" value="true"/>
+    </target>
+</project>
