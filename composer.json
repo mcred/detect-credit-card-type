@@ -16,7 +16,9 @@
         "theseer/autoload": "^1.24"
     },
     "autoload": {
-        "psr-0": { "CardDetect": "src/" }
+        "psr-4": {
+            "CardDetect\\Detector": "src/"
+        }
     },
     "bin": [
         "card-detect"
