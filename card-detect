@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+/**
+ * This file is the the main CLI for Card Detect.
+ *
+ * @copyright   Derek Smart <derek@grindaga.com>
+ * @author      Derek Smart <derek@grindaga.com>
+ * @license     MIT
+ */
+
+$minimunVersion = '7.0.0';
+if (version_compare($minimunVersion, PHP_VERSION, '>')) {
+    echo 'Card Detect requires a minimum PHP version of 7.0' . PHP_EOL;
+    die(1);
+}
+
+$autoload = [
+    __DIR__ . '/../src/autoload.php',
+    __DIR__ . '/src/autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/vendor/autoload.php'
+];
+foreach ($autoload as $file) {
+    if (file_exists($file)) {
+        require $file;
+    }
+}
+$detector = new CardDetect\Detector();
+echo $detector->detect($argv[1]);
+exit(0);
