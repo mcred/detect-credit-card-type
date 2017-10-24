@@ -10,7 +10,7 @@ class Detector
 
     private function isMasterCard(string $card) :  bool
     {
-        return preg_match("/^5$|^5[1-5][0-9]{0,14}$/i", $card);
+        return preg_match("/^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6][0-9]{5,}|27[01][0-9]{4,}|2720[0-9]{3,}$/i", $card);
     }
 
     private function isAmex(string $card) : bool
@@ -27,8 +27,8 @@ class Detector
     {
         $cardTypes = [
             'Visa',
-            'MasterCard',
             'Amex',
+            'MasterCard',
             'Discover'
         ];
         foreach ($cardTypes as $cardType) {

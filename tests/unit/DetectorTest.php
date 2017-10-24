@@ -15,8 +15,18 @@ class DetectorTest extends \PHPUnit\Framework\TestCase
         $this->cards = [
             'Visa' => '4111111111111111',
             'MasterCard' => '5555555555554444',
+            'MasterCard1' => '2221000000000009',
+            'MasterCard2' => '2223000048400011',
+            'MasterCard3' => '2223016768738313',
+            'MasterCard4' => '5105510551055105',
             'Discover' => '6011111111111117',
             'Amex' => '378282246310005',
+            'Amex1' => '371449635398431',
+            'AmexCorp' => '378734493671000',
+            'JCB' => '3530111333300000',
+            'JCB1' => '3566002020360505',
+            'Diners' => '30569309025904',
+            'Diners1' => '38520000023237',
             'Invalid' => '7877787778777877'
         ];
     }
@@ -29,6 +39,10 @@ class DetectorTest extends \PHPUnit\Framework\TestCase
     public function testIsMasterCard()
     {
         $this->assertEquals('MasterCard', $this->Detector->detect($this->cards['MasterCard']));
+        $this->assertEquals('MasterCard', $this->Detector->detect($this->cards['MasterCard1']));
+        $this->assertEquals('MasterCard', $this->Detector->detect($this->cards['MasterCard2']));
+        $this->assertEquals('MasterCard', $this->Detector->detect($this->cards['MasterCard3']));
+        $this->assertEquals('MasterCard', $this->Detector->detect($this->cards['MasterCard4']));
     }
 
     public function testIsDiscover()
