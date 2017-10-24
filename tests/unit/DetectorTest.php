@@ -61,4 +61,10 @@ class DetectorTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals('Invalid Card', $this->Detector->detect($this->cards['Invalid']));
     }
+
+    public function testIsJCB()
+    {
+        $this->assertEquals('JCB', $this->Detector->detect($this->cards['JCB']));
+        $this->assertEquals('JCB', $this->Detector->detect($this->cards['JCB1']));
+    }
 }
