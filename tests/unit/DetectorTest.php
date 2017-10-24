@@ -53,6 +53,8 @@ class DetectorTest extends \PHPUnit\Framework\TestCase
     public function testIsAmex()
     {
         $this->assertEquals('Amex', $this->Detector->detect($this->cards['Amex']));
+        $this->assertEquals('Amex', $this->Detector->detect($this->cards['Amex1']));
+        $this->assertEquals('Amex', $this->Detector->detect($this->cards['AmexCorp']));
     }
 
     public function testIsInvalid()
