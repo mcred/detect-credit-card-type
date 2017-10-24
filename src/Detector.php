@@ -28,6 +28,11 @@ class Detector
         return preg_match("/^(?:2131|1800|35[0-9]{3})[0-9]{3,}$/i", $card);
     }
 
+    private function isDinersClub(string $card) : bool
+    {
+        return preg_match("/^3(?:0[0-5]|[68][0-9])[0-9]{4,}$/i", $card);
+    }
+
     public function detect(string $card) : string
     {
         $cardTypes = [
@@ -35,7 +40,8 @@ class Detector
             'Amex',
             'MasterCard',
             'Discover',
-            'JCB'
+            'JCB',
+            'DinersClub'
         ];
         foreach ($cardTypes as $cardType) {
             $method = 'is' . $cardType;

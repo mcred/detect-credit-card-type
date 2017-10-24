@@ -70,7 +70,7 @@ class DetectorTest extends \PHPUnit\Framework\TestCase
 
     public function testIsDiners()
     {
-        $this->assertEquals('Diners', $this->Detector->detect($this->cards['Diners']));
-        $this->assertEquals('Diners', $this->Detector->detect($this->cards['Diners1']));
+        $this->assertEquals('DinersClub', $this->Detector->detect($this->cards['Diners']));
+        $this->assertEquals('DinersClub', $this->Detector->detect($this->cards['Diners1']));
     }
 }
