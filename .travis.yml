@@ -1,3 +1,6 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=$CodeClimateToken
 language: php
 php:
   - '7.0'
@@ -5,12 +8,13 @@ cache:
   directories:
   - $HOME/.composer/cache/files
 install:
-  - composer install
+  - sudo apt-get install ant
   - ant
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - phpunit
-addons:
-  code_climate:
-    repo_token: 2c583d3a7900dea97a5b4997ecc01c2d19215b3f183f01dea50d72b0880b52bc
-after_success:
-  - vendor/bin/test-reporter
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
